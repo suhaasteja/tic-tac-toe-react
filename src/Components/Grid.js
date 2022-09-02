@@ -4,6 +4,7 @@ export const Grid = () => {
   const [inputs, setInputs] = useState(Array(9).fill(""));
   const [turn, setTurn] = useState("x");
   const [winner, setWinner] = useState("");
+  const [draw, setDraw] = useState(false);
 
   const checkWinner = (inputs) => {
     const winningPatterns = {
@@ -38,10 +39,18 @@ export const Grid = () => {
         }
       });
     }
+    console.log(winner);
   };
+
+  const checkDraw = (inputs) => {
+    if(inputs.filter(input => input === "").length === 0 && !winner){
+      setDraw(true);
+    }
+  }
 
   const handleClick = (index) => {
     if (winner) {
+      console.log(winner)
       return;
     }
     if (inputs[index] !== "") {
@@ -54,14 +63,16 @@ export const Grid = () => {
       inputs[index] = "o";
       setTurn("x");
     }
-    checkWinner(inputs);
     setInputs(inputs);
+    checkWinner(inputs);
+    checkDraw(inputs);
   };
 
   const playAgain = () => {
       setInputs(Array(9).fill(""));
-      setTurn('x')
-      setWinner('')
+      setTurn('x');
+      setWinner('');
+      setDraw(false);
   }
 
   return (
@@ -80,8 +91,12 @@ export const Grid = () => {
         })}
       </div>
       <div className="winner-container">
-        {winner && <p>
+        {(winner) && <p>
             {winner} is the winner <br /><br />
+            <button onClick={playAgain}>play again</button>
+            </p>}
+        {(draw && !winner) && <p>
+            Draw <br /><br />
             <button onClick={playAgain}>play again</button>
             </p>}
       </div>

@@ -11,22 +11,28 @@ body {
   text-align: center;
 }
 
+*{
+
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .grid-container{
-  box-sizing: border-box;
   display: grid;
-  grid-template-columns: auto auto auto;
+  gap: 0px;
+  grid-template-columns: repeat(3, 1fr);
   border: 2px solid black;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
 .grid-item{
   display: flex;
+  padding: 10px;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
