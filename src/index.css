@@ -9,11 +9,32 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: white;
+  background: darkcyan;
 }
 
 *{
 
   box-sizing: border-box;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+}
+
+button{
+  padding: 10px;
+  font-size: 20px;
+  text-transform: capitalize;
+  background: #fff8dc;
+  cursor: pointer;
+}
+
+button:hover{
+  background: #e4d494;
 }
 
 code {
@@ -25,7 +46,8 @@ code {
   display: grid;
   gap: 0px;
   grid-template-columns: repeat(3, 1fr);
-  border: 2px solid black;
+  grid-template-rows: repeat(3, 1fr);
+  border: 2px solid white;
   width: 250px;
   height: 250px;
 }
@@ -35,5 +57,5 @@ code {
   padding: 10px;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid white;
 }
